@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Previsão de Fraturas Desportivas</title>
+</head>
+<body>
+    <h1>Previsão de Fraturas Desportivas</h1>
+    <form method="POST" action="/">
+        <label for="gender">Gênero:</label>
+        <select id="gender" name="gender">
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+        </select><br>
+
+        <label for="age">Idade:</label>
+        <select id="age" name="age">
+            <option value="0-4 years">0-4 years</option>
+            <option value="5-9 years">5-9 years</option>
+            <option value="10-14 years">10-14 years</option>
+            <option value="15-19 years">15-19 years</option>
+        </select><br>
+
+        <label for="sport">Desporto:</label>
+        <select id="sport" name="sport">
+            <option value="Football">Football</option>
+            <option value="Rugby">Rugby</option>
+            <option value="Trampoline">Trampoline</option>
+            <option value="Basketball">Basketball</option>
+            <option value="Cricket">Cricket</option>
+            <option value="Hockey">Hockey</option>
+            <option value="Cycling">Cycling</option>
+            <option value="Skateboarding">Skateboarding</option>
+            <option value="Ice-Skating">Ice-Skating</option>
+            <option value="RunningJogging">RunningJogging</option>
+            <option value="Motorsport">Motorsport</option>
+            <option value="CombatSports">CombatSports</option>
+            <option value="Swimming">Swimming</option>
+            <option value="Gymnastics(NotTrampoline)">Gymnastics(NotTrampoline)</option>
+            <option value="Rollerblades/Skates">Rollerblades/Skates</option>
+            <option value="Baseball/Softball">Baseball/Softball</option>
+            <option value="Tennis">Tennis</option>
+            <option value="Weightlifting/StrengthBuilding">Weightlifting/StrengthBuilding</option>
+            <option value="WatersportsNon-Motorised">WatersportsNon-Motorised</option>
+            <option value="Skiing">Skiing</option>
+            <option value="Horse-Riding">Horse-Riding</option>
+            <option value="Snowboarding">Snowboarding</option>
+            <option value="Badminton">Badminton</option>
+            <option value="Squash">Squash</option>
+            <option value="Climbing/Mountaineering/Caving">Climbing/Mountaineering/Caving</option>
+            <option value="Netball">Netball</option>
+            <option value="Golf">Golf</option>
+            <option value="Aerobics">Aerobics</option>
+            <option value="Hiking">Hiking</option>
+            <option value="AirSports-NotMotorised">AirSports-NotMotorised</option>
+            <option value="Watersports-Motorised">Watersports-Motorised</option>
+            <option value="OtherSpecifiedSport">OtherSpecifiedSport</option>
+            <option value="Watersports-Non-Motorised">Watersports-Non-Motorised</option>
+            <option value="SCUBADiving(Recreational)">SCUBADiving(Recreational)</option>
+        </select><br>
+
+        <label for="local_inj">Local da Lesão:</label>
+        <select id="local_inj" name="local_inj">
+            <option value="Athletics_and_Sports_Area">Athletics_and_Sports_Area</option>
+            <option value="School_Educational_Area">School_Educational_Area</option>
+            <option value="Public_Recreational_Area">Public_Recreational_Area</option>
+            <option value="Home">Home</option>
+            <option value="Road_Street_or_Motorway">Road_Street_or_Motorway</option>
+            <option value="Countryside_Beach_Sea">Countryside_Beach_Sea</option>
+            <option value="Other_location">Other_location</option>
+            <option value="Farm">Farm</option>
+        </select><br>
+
+        <label for="region_inj">Região Corporal da Lesão:</label>
+        <select id="region_inj" name="region_inj">
+            <option value="Upper_Limb">Upper_Limb</option>
+            <option value="Head">Head</option>
+            <option value="nan">nan</option>
+            <option value="Abd_spi_tho_pel">Abd_spi_tho_pel</option>
+            <option value="Lower_limb">Lower_limb</option>
+            <option value="Site_unspecified">Site_unspecified</option>
+        </select><br>
+
+        <label for="inj_type">Tipo de Lesão:</label>
+        <select id="inj_type" name="inj_type">
+            <option value="Fall/Slip/Trip-LOWoneMetre">Fall/Slip/Trip-LOW&lt;oneMetre</option>
+            <option value="Blow_From_Object">Blow_From_Object</option>
+            <option value="Blunt_Force/Pushed">Blunt_Force/Pushed</option>
+            <option value="Physical_OverExertion/OverExtention">Physical_OverExertion/OverExtention</option>
+            <option value="Fall/Slip/Trip-HIGHoneMetre">Fall/Slip/Trip-HIGH&gt;oneMetre</option>
+            <option value="Punched/Kicked">Punched/Kicked</option>
+            <option value="Crushing_Injury">Crushing_Injury</option>
+            <option value="CuttingPiercing_by_Other_Sharp_Object">CuttingPiercing_by_Other_Sharp_Object</option>
+            <option value="Other">Other</option>
+        </select><br>
+
+        <button type="button" onclick="exibirEscolhas()">resultado da escolhas</button>
+        <div id="result"></div>
+        <script>
+            function exibirEscolhas() {
+                var form = document.querySelector('form');
+                var formData = new FormData(form);
+                
+                fetch('/', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('result').innerHTML = data;
+                })
+                .catch(error => console.error(error));
+            }
+        </script>        
+    </form>
+</body>
+</html>
